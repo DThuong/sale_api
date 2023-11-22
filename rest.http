@@ -1,0 +1,97 @@
+GET http://localhost:3000/api/account/
+###
+GET http://localhost:3000/api/account/login
+###
+GET http://localhost:3000/api/account/register
+###
+
+// Đăng ký tài khoản
+POST http://localhost:3000/api/account/register
+content-type: application/json
+
+{
+    "name": "ndt",
+    "email": "ndt@gmail.com",
+    "password": "123456",
+    "confirm-password": "123456"
+}
+
+// Đăng nhập
+###
+POST http://localhost:3000/api/account/login/
+content-type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "123456"
+}
+
+// Lấy toàn bộ danh sách sản phẩm
+###
+GET http://localhost:3000/api/products/
+
+// Lấy 1 sản phẩm chi tiết theo id
+###
+GET http://localhost:3000/api/products/6
+
+// Thêm sản phẩm
+###
+POST http://localhost:3000/api/products/
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInR5cGUiOiJBRE1JTiIsImlhdCI6MTcwMDQxNTUxMywiZXhwIjoxNzAwNDE5MTEzfQ.vGFbEkYEoMc3ezottpIJxPEJihkJR_ZBwxzKn8EOt4Y
+Content-Type: application/json
+
+{
+    "name": "toeic foundation",
+    "price": "1400",
+    "desc": "manufacture by British council."
+}
+// Cập nhật sản phẩm
+###
+PUT http://localhost:3000/api/products/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5kdEBnbWFpbC5jb20iLCJ0eXBlIjoiQ0xJRU5UIiwiaWF0IjoxNzAwMzE0NzM4LCJleHAiOjE3MDAzMTgzMzh9.SunFaBafHyVbFhU5uT43G_k9DSs6nmyjtg7BGCBTEPM
+Content-Type: application/json
+
+{
+    "name": "ielts foundation",
+    "price": "1000",
+    "desc": "manufacture by British council."
+}
+
+// Xóa sản phẩm
+###
+DELETE http://localhost:3000/api/products/6
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5kdEBnbWFpbC5jb20iLCJ0eXBlIjoiQ0xJRU5UIiwiaWF0IjoxNzAwMzE0NzM4LCJleHAiOjE3MDAzMTgzMzh9.SunFaBafHyVbFhU5uT43G_k9DSs6nmyjtg7BGCBTEPM
+
+// Lấy toàn bộ danh sách order
+###
+GET http://localhost:3000/api/orders/
+
+// Thêm một order mới
+###
+POST http://localhost:3000/api/orders/
+Content-Type: application/json
+
+{
+    "name": "ielts foundation",
+    "quantity": "3",
+    "price": "2500"
+}
+
+// Xem chi tiết order theo id
+###
+GET http://localhost:3000/api/orders/2
+
+// Cập nhật order theo id
+###
+PUT http://localhost:3000/api/orders/2
+Content-Type: application/json
+
+{
+    "name": "ielts foundation",
+    "quantity": "10",
+    "price": "25500"
+}
+
+// Xóa order theo id
+###
+DELETE http://localhost:3000/api/orders/2
