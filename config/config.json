@@ -8,11 +8,9 @@
   },
   "production": {
     "username": "dbsale271602",
-    "password": "Thuong2002%40%23",
+    "password": "Thuong2002@#",
     "database": "sale",
     "host": "dbsale271602.mysql.database.azure.com",
-    "dialect": {"ssl": {
-        "rejectUnauthorized": false
-    }}
+    "dialect": "mysql"
   }
 }

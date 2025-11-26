@@ -16,21 +16,24 @@ console.log('============================');
 let dialectOptions = {};
 
 if (process.env.DB_SSL_CA_PATH && fs.existsSync(process.env.DB_SSL_CA_PATH)) {
-  console.log('✅ Using SSL with certificate file');
+  console.log('Using SSL with certificate file');
   dialectOptions = {
     ssl: {
-      ca: fs.readFileSync(process.env.DB_SSL_CA_PATH)
+      ca: fs.readFileSync(process.env.DB_SSL_CA_PATH),
+      require: true,
+      rejectUnauthorized: true
     }
   };
 } else if (process.env.NODE_ENV === 'production') {
-  console.log('✅ Using SSL without certificate verification (Azure mode)');
+  console.log('Using SSL without certificate verification (Azure mode)');
   dialectOptions = {
     ssl: {
-      rejectUnauthorized: false
+        require: true,
+        rejectUnauthorized: false
     }
   };
 } else {
-  console.log('⚠️ No SSL configured');
+  console.log('No SSL configured');
 }
 
 const sequelize = new Sequelize(
