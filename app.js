@@ -6,11 +6,20 @@ const OrderRouter = require("./routers/OrderRouter");
 const ProductRouter = require("./routers/ProductRouter");
 const mysql = require("mysql2");
 const { sequelize } = require('./models/');
+const seq = require("./config/connectDb");
 const app = express();
 // env
 const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+seq.authenticate()
+  .then(() => {
+    console.log('Connected to Azure MySQL successfully!');
+  })
+  .catch(err => {
+    console.error('Unable to connect to DB:', err);
+  });
+
 
 app.get("/", (req, res) => {
     res.json({
