@@ -4,7 +4,7 @@ require('dotenv').config();
 const AccountRouter = require("./routers/AccountRouter");
 const OrderRouter = require("./routers/OrderRouter");
 const ProductRouter = require("./routers/ProductRouter");
-// const mysql = require("mysql2");
+require("mysql2");
 const { sequelize } = require('./models/');
 const seq = require("./config/connectDb");
 const app = express();
