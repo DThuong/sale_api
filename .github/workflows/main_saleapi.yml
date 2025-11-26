@@ -61,4 +61,17 @@ jobs:
           app-name: 'saleApi'
           slot-name: 'Production'
           package: .
-          
+      
+      - name: Run Database Migrations
+        run: |
+          echo "🔄 Running migrations..."
+          az webapp ssh --resource-group node_app --name saleApi \
+            --command "cd /home/site/wwwroot && NODE_ENV=production npx sequelize-cli db:migrate"
+      
+      # Chạy seeders
+      - name: Run Database Seeders (First time only)
+        run: |
+          echo "Seeding database..."
+          az webapp ssh --resource-group node_app --name saleApi \
+            --command "cd /home/site/wwwroot && NODE_ENV=production npx sequelize-cli db:seed:all"
+        continue-on-error: true  
